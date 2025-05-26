@@ -1,0 +1,11 @@
+{
+  "name": "@my-gas-project/getujihoukoku",
+  "exports": {
+    ".": "./main.ts"
+  },
+  "tasks": {
+    "build": "deno run -A ../../_build.ts @my-gas-project/getujihoukoku",
+    "push": "deno run --allow-env --allow-net --allow-read --allow-sys --allow-write npm:@google/clasp@3.0.4-alpha push -f",
+    "deploy": "deno task build && deno task push"
+  }
+}

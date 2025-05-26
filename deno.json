@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "types": ["./global.d.ts"]
+  },
+  "workspace": [
+    "./packages/getujihoukoku"
+  ],
+  "tasks": {
+  },
+  "imports": {
+    "@std/cli": "jsr:@std/cli@1.0.17"
+  },
+  "lint": {
+    "rules": {
+      "exclude": ["no-node-globals"]
+    }
+  }
+}
