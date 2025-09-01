@@ -81,10 +81,12 @@ export function writePRsToSheet(
   prs: PullRequest[]
 ) {
   newSheet
-    .getRange("A32:F32")
+    .getRange("A31:F31")
     .setValues([
       ["タイトル", "URL", "作成日", "マージ日", "作成者", "リポジトリ名"],
     ]);
+
+  newSheet.getRange("A11:B11").setValues([["作業内容", "作業時間"]]);
 
   if (prs.length > 0) {
     const values = prs.map((pr) => [
@@ -95,7 +97,7 @@ export function writePRsToSheet(
       pr.user.login,
       pr.base.repo.full_name,
     ]);
-    newSheet.getRange(33, 1, values.length, 6).setValues(values);
+    newSheet.getRange(32, 1, values.length, 6).setValues(values);
 
     // 列幅の自動調整
     newSheet.autoResizeColumns(1, 6);

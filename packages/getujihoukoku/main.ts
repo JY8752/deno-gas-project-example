@@ -10,14 +10,17 @@ import {
   writeDateRange,
   writePRsToSheet,
 } from "./lib/sheet.ts";
+import { Property } from "@my-gas-project/shared/property";
+
+const userPropertyKey = ["GITHUB_TOKEN"] as const;
+const scriptPropertyKey = ["GITHUB_USERNAME", "GITHUB_ORG"] as const;
 
 function setPropertoes() {
-  const scriptProperties = PropertiesService.getScriptProperties();
-  const userProperties = PropertiesService.getUserProperties();
+  const property = new Property(userPropertyKey, scriptPropertyKey);
 
-  userProperties.setProperty("GITHUB_TOKEN", "");
-  scriptProperties.setProperty("GITHUB_USERNAME", "");
-  scriptProperties.setProperty("GITHUB_ORG", "");
+  property.setProperty("GITHUB_TOKEN", "");
+  property.setProperty("GITHUB_USERNAME", "");
+  property.setProperty("GITHUB_ORG", "");
 }
 
 function makeReport() {
@@ -31,14 +34,12 @@ function makeReport() {
     return;
   }
 
-  // GASのスクリプトプロパティ
-  const scriptProperties = PropertiesService.getScriptProperties();
-  // GASのユーザープロパティ
-  const userProperties = PropertiesService.getUserProperties();
+  // GASのプロパティ
+  const property = new Property(userPropertyKey, scriptPropertyKey);
 
-  const token = userProperties.getProperty("GITHUB_TOKEN");
-  const username = scriptProperties.getProperty("GITHUB_USERNAME");
-  const org = scriptProperties.getProperty("GITHUB_ORG");
+  const token = property.getProperty("GITHUB_TOKEN");
+  const username = property.getProperty("GITHUB_USERNAME");
+  const org = property.getProperty("GITHUB_ORG");
 
   if (!token || !username || !org) {
     throw new Error(

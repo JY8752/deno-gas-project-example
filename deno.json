@@ -2,11 +2,8 @@
   "compilerOptions": {
     "types": ["./global.d.ts"]
   },
-  "workspace": [
-    "./packages/getujihoukoku"
-  ],
-  "tasks": {
-  },
+  "workspace": ["./packages/getujihoukoku", "./packages/shared"],
+  "tasks": {},
   "imports": {
     "@std/cli": "jsr:@std/cli@1.0.17"
   },

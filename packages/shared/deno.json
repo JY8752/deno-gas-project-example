@@ -1,0 +1,8 @@
+{
+  "name": "@my-gas-project/shared",
+  "tasks": {},
+  "exports": {
+    "./property": "./src/property/index.ts"
+  },
+  "imports": {}
+}
