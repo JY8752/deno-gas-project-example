@@ -11,6 +11,7 @@ await esbuild.build({
   outfile: `./dist/out.js`,
   bundle: true,
   format: "esm",
+  target: "es2015",
 });
 
 await Deno.copyFile("appsscript.json", "dist/appsscript.json");
